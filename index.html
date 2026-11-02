@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen Plus - Poster Maker</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#fdfbf5;color:#111}
+a{text-decoration:none;color:inherit}
+.top{background:#0a2e1a;color:#fff;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:99}
+.logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:900;color:#f5d67a}
+.logo img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #f5d67a}
+.top nav{display:flex;gap:12px;flex-wrap:wrap}
+.top nav a{color:#fff;font-weight:700;font-size:13px}
+.wa{border:1px solid #f5d67a;color:#f5d67a;padding:6px 12px;border-radius:8px;font-weight:800;font-size:13px}
+.langbar{background:#0a2e1a;border-top:1px solid #2a4a2a;padding:8px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.langbar button{padding:7px 14px;border-radius:20px;border:1px solid #f5d67a;background:transparent;color:#fff;font-weight:800;cursor:pointer;font-size:13px}
+.langbar button.on{background:#f5d67a;color:#000}
+.hero-photo{width:100%;background:#0a2e1a}
+.hero-photo img{width:100%;max-height:420px;object-fit:cover;display:block}
+.hero{background:#0a2e1a;color:#fff;padding:22px 18px;text-align:center}
+.hero h1{font-size:44px;line-height:1;color:#e9c46a}
+.hero h1 b{color:#fff;font-size:30px;display:block;margin-top:6px}
+.hero p{font-size:13px;color:#ddd;margin:12px auto;line-height:1.6;max-width:560px}
+.btn-g{background:#e9c46a;color:#000;padding:11px 22px;border-radius:6px;font-weight:900;display:inline-block}
+.btn-o{border:1px solid #e9c46a;color:#fff;padding:11px 14px;border-radius:6px;font-weight:800;display:inline-block;margin-left:8px}
+.wrap{max-width:1100px;margin:auto;padding:16px 12px}
+.head{margin:18px 0 10px}
+.head h2{font-size:20px}
+.head p{font-size:12px;color:#666;margin-top:4px}
+.maker{background:#fff;border:2px solid #0a2e1a;border-radius:14px;padding:14px;display:flex;gap:14px;flex-wrap:wrap}
+.left{flex:1;min-width:280px}
+.right{flex:1;min-width:280px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{padding:9px 14px;border-radius:20px;border:1px solid #0a2e1a;background:#fff;font-weight:800;cursor:pointer;font-size:13px}
+.tabs button.on{background:#0a2e1a;color:#f5d67a}
+label{font-size:12px;font-weight:800;display:block;margin:10px 0 4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+textarea{height:60px}
+.row{display:flex;gap:8px}
+.row>div{flex:1}
+.colors{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.colors button{width:36px;height:36px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;cursor:pointer}
+canvas{width:100%;max-width:520px;border-radius:10px;border:3px solid #e9c46a;background:#0a2e1a;display:block;margin:auto}
+.dlbtn{background:#0a2e1a;color:#f5d67a;border:none;padding:12px;border-radius:8px;font-weight:900;width:100%;cursor:pointer;margin-top:10px;font-size:15px}
+.dlbtn2{background:#e9c46a;color:#000;border:none;padding:12px;border-radius:8px;font-weight:900;width:100%;cursor:pointer;margin-top:8px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:700px){.grid4{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}}
+.card-g{background:#fdf6d8;border:1px solid #d9c27a;border-radius:10px;overflow:hidden;text-align:center}
+.card-g img{width:100%;height:110px;object-fit:cover}
+.card-g .t{padding:7px 5px;font-size:13px;font-weight:800}
+.about{display:flex;gap:12px;background:#fff;border:1px solid #eee;padding:12px;border-radius:12px;align-items:flex-start;margin-top:14px}
+.about img{width:120px;height:170px;object-fit:cover;border-radius:12px;border:3px solid #e9c46a}
+.about p{font-size:12px;color:#555;line-height:1.6}
+footer{background:#0a2e1a;color:#fff;padding:20px 12px 10px;margin-top:18px;text-align:center}
+</style>
+</head>
+<body>
 
+<div class="top">
+<div class="logo"><img src="sadiq.jpg"><span>Deen Plus Official</span></div>
+<nav><a href="#">Home</a><a href="#maker">Poster Maker</a><a href="#thumb">Thumbnail</a><a href="#about">About</a></nav>
+<a class="wa" href="https://wa.me/923000000000?text=Assalam-o-Alaikum%20Deen%20Plus" target="_blank">WhatsApp 💬</a>
+</div>
+
+<div class="langbar">
+<button class="on" onclick="setLang('ur',this)">اردو</button>
+<button onclick="setLang('en',this)">English</button>
+<button onclick="setLang('hi',this)">हिन्दी</button>
+<button onclick="setLang('bn',this)">বাংলা</button>
+<button onclick="setLang('ta',this)">தமிழ்</button>
+<button onclick="setLang('te',this)">తెలుగు</button>
+<button onclick="setLang('tr',this)">Türkçe</button>
+<button onclick="setLang('ar',this)">العربية</button>
+</div>
+
+<div class="hero-photo"><img src="sadiq.jpg" alt="Sadiq Hussain"></div>
+
+<div class="hero">
+<h1><span data-i="title1">Deen Plus</span><b data-i="title2">Deen Ki Baat Dil Tak</b></h1>
+<p data-i="heroP">Ab sirf dekhna nahi, banana bhi hai. Yahi website par apna Poster, Thumbnail, Status banao aur download karo. Kisi app ki zaroorat nahi.</p>
+<a class="btn-g" href="#maker" data-i="make">Poster Banao 👇</a>
+<a class="btn-o" href="#thumb" data-i="thumbBtn">Thumbnail Banao</a>
+</div>
+
+<div class="wrap">
+
+<!-- POSTER / THUMBNAIL MAKER - ASLI SYSTEM -->
+<div class="head" id="maker"><h2 data-i="makerH">🎨 Poster & Thumbnail Maker - Yahi Banao</h2><p data-i="makerP">Apni tasveer lagao, likho, rang badlo, download karo. Sab kuch yahi hoga.</p></div>
+
+<div class="maker">
+<div class="left">
+<div class="tabs">
+<button id="btnPoster" class="on" onclick="setType('poster',this)">📄 Poster 1080x1080</button>
+<button id="btnThumb" onclick="setType('thumb',this)">▶️ Thumbnail 1280x720</button>
+<button id="btnStatus" onclick="setType('status',this)">📱 Status 1080x1920</button>
+</div>
+
+<label data-i="up">1. Apni Tasveer Lagao (Masjid / Apni Photo)</label>
+<input type="file" accept="image/*" onchange="loadImg(event)">
+<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+<button onclick="setBg('green')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#0a2e1a;color:#fff;font-weight:700;cursor:pointer">🟢 Green BG</button>
+<button onclick="setBg('gold')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#e9c46a;color:#000;font-weight:700;cursor:pointer">🟡 Golden BG</button>
+<button onclick="setBg('black')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#111;color:#fff;font-weight:700;cursor:pointer">⚫ Black BG</button>
+<button onclick="setBg('kaaba')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;font-weight:700;cursor:pointer">🕋 Kaaba Photo</button>
+</div>
+
+<label data-i="t1">2. Upar Wala Likha (Bara)</label>
+<input id="t1" value="Jummah Mubarak" oninput="draw()" placeholder="Jummah Mubarak">
+<label data-i="t2">3. Neeche Wala Likha (Chota)</label>
+<input id="t2" value="Deen Plus Official - Deen Ki Baat Dil Tak" oninput="draw()" placeholder="Deen Plus Official">
+<label data-i="t3">4. Apna Naam / Channel Naam</label>
+<input id="t3" value="Sadiq Hussain" oninput="draw()" placeholder="Apna naam">
+
+<div class="row">
+<div><label data-i="col">Rang - Likhaai Ka</label>
+<select id="col" onchange="draw()"><option value="#f5d67a">Golden</option><option value="#ffffff">White</option><option value="#000000">Black</option><option value="#ff3333">Red</option><option value="#00ff88">Green</option></select></div>
+<div><label data-i="size">Size - Bara / Chota</label>
+<select id="sz" onchange="draw()"><option value="70">Bara</option><option value="55" selected>Medium</option><option value="40">Chota</option></select></div>
+</div>
+
+<label data-i="style">Style</label>
+<select id="style" onchange="draw()"><option value="center">Center Wala</option><option value="bottom">Neeche Wala</option><option value="top">Upar Wala</option></select>
+
+</div>
+
+<div class="right">
+<canvas id="cv" width="1080" height="1080"></canvas>
+<button class="dlbtn" onclick="downloadPoster()" data-i="dl">⬇ Download Poster - Tasveer Save Karo</button>
+<button class="dlbtn2" onclick="useSample()" data-i="sample">✨ Sample Poster Dekho</button>
+<p style="font-size:11px;color:#888;text-align:center;margin-top:6px" data-i="note">Download dabao, tasveer mobile me aa jayegi. Phir WhatsApp / YouTube / Facebook par laga do.</p>
+</div>
+</div>
+
+<div class="head"><h2 data-i="ready">Ready Made Posters - Seedha Download Karo</h2></div>
+<div class="grid4">
+<div class="card-g"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600"><div class="t">SubhanAllah Poster</div></div>
+<div class="card-g"><img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=600"><div class="t">Allah Calligraphy</div></div>
+<div class="card-g"><img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600"><div class="t">Jummah Mubarak</div></div>
+<div class="card-g"><img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600"><div class="t">Ramadan Poster</div></div>
+</div>
+
+<div class="about" id="about">
+<div><h3 data-i="aboutH">About Sadiq Hussain</h3><p data-i="aboutP">Founder of Deen Plus Official. Ab is website par sab apna poster, thumbnail khud bana sakenge.</p></div>
+<img src="sadiq.jpg" alt="Sadiq Hussain">
+</div>
+
+</div>
+
+<footer><h3 style="color:#e9c46a">Deen Plus Official</h3><p style="font-size:12px;color:#ccc">Email: deenplusofficial786@gmail.com</p><p style="font-size:12px;color:#ccc;margin-top:8px">© 2024 Deen Plus Official • All Rights Reserved</p></footer>
+
+<script>
+var cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+var img=null, bg='green', type='poster';
+function setType(t,btn){
+type=t;
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+if(t=='poster'){cv.width=1080;cv.height=1080;}
+if(t=='thumb'){cv.width=1280;cv.height=720;}
+if(t=='status'){cv.width=1080;cv.height=1920;}
+draw();
+}
+function setBg(b){bg=b; draw();}
+function loadImg(e){
+var f=e.target.files[0]; if(!f) return;
+var r=new FileReader(); r.onload=function(ev){ img=new Image(); img.onload=function(){draw();}; img.src=ev.target.result;}; r.readAsDataURL(f);
+}
+function useSample(){
+bg='kaaba'; img=new Image(); img.crossOrigin='anonymous';
+img.onload=function(){draw();};
+img.src='https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1200';
+}
+function draw(){
+var W=cv.width, H=cv.height;
+// background
+if(bg=='green'){ctx.fillStyle='#0a2e1a'; ctx.fillRect(0,0,W,H);}
+if(bg=='gold'){ctx.fillStyle='#e9c46a'; ctx.fillRect(0,0,W,H);}
+if(bg=='black'){ctx.fillStyle='#111'; ctx.fillRect(0,0,W,H);}
+if(bg=='kaaba'){ctx.fillStyle='#0a2e1a'; ctx.fillRect(0,0,W,H);}
+if(img){
+var sc=Math.max(W/img.width, H/img.height);
+var nw=img.width*sc, nh=img.height*sc;
+ctx.globalAlpha=0.45; ctx.drawImage(img,(W-nw)/2,(H-nh)/2,nw,nh); ctx.globalAlpha=1;
+ctx.fillStyle='rgba(0,0,0,0.35)'; ctx.fillRect(0,0,W,H);
+}
+// golden border
+ctx.strokeStyle='#e9c46a'; ctx.lineWidth=12; ctx.strokeRect(15,15,W-30,H-30);
+ctx.strokeStyle='rgba(245,214,122,0.5)'; ctx.lineWidth=2; ctx.strokeRect(35,35,W-70,H-70);
+var col=document.getElementById('col').value;
+var sz=parseInt(document.getElementById('sz').value);
+var st=document.getElementById('style').value;
+var t1=document.getElementById('t1').value;
+var t2=document.getElementById('t2').value;
+var t3=document.getElementById('t3').value;
+ctx.textAlign='center';
+var cy = st=='top'? H*0.28 : st=='bottom'? H*0.62 : H*0.45;
+ctx.fillStyle=col;
+ctx.font='900 '+sz+'px Arial';
+wrapText(t1, W/2, cy, W-120, sz+12);
+ctx.font='700 28px Arial';
+ctx.fillStyle='#ffffff';
+wrapText(t2, W/2, cy+90, W-140, 36);
+ctx.fillStyle='#e9c46a';
+ctx.font='900 34px Arial';
+ctx.fillText('☪ '+t3+' • Deen Plus', W/2, H-70);
+ctx.font='700 22px Arial';
+ctx.fillStyle='#fff';
+ctx.fillText('deenplusofficial786@gmail.com', W/2, H-38);
+}
+function wrapText(text,x,y,maxW,lh){
+var words=text.split(' '), line='', lines=[];
+for(var i=0;i<words.length;i++){ var test=line+words[i]+' '; if(ctx.measureText(test).width>maxW && line!=''){lines.push(line); line=words[i]+' ';} else line=test; }
+lines.push(line);
+for(var j=0;j<lines.length;j++){ ctx.fillText(lines[j], x, y + j*lh); }
+}
+function downloadPoster(){
+var a=document.createElement('a');
+a.download='deen-plus-poster-'+type+'.jpg';
+a.href=cv.toDataURL('image/jpeg',0.95);
+a.click();
+}
+draw();
+var T={
+ur:{title1:"دین پلس",title2:"دین کی بات دل تک",heroP:"اب صرف دیکھنا نہیں، بنانا بھی ہے۔ یہیں ویب سائٹ پر اپنا پوسٹر، تھمب نیل، اسٹیٹس بناؤ اور ڈاؤن لوڈ کرو۔",make:"پوسٹر بناؤ 👇",thumbBtn:"تھمب نیل بناؤ",makerH:"🎨 پوسٹر اور تھمب نیل میکر - یہیں بناؤ",makerP:"اپنی تصویر لگاؤ، لکھو، رنگ بدلو، ڈاؤن لوڈ کرو۔ سب کچھ یہیں ہوگا۔",up:"1. اپنی تصویر لگاؤ",t1:"2. اوپر والا لکھا (بڑا)",t2:"3. نیچے والا لکھا (چھوٹا)",t3:"4. اپنا نام / چینل نام",col:"رنگ - لکھائی کا",size:"سائز - بڑا / چھوٹا",style:"اسٹائل",dl:"⬇ ڈاؤن لوڈ پوسٹر - تصویر سیو کرو",sample:"✨ سیمپل پوسٹر دیکھو",note:"ڈاؤن لوڈ دباؤ، تصویر موبائل میں آ جائے گی۔ پھر واٹس ایپ / یوٹیوب / فیس بک پر لگا دو۔",ready:"ریڈی میڈ پوسٹرز - سیدھا ڈاؤن لوڈ کرو",aboutH:"صادق حسین کے بارے میں",aboutP:"دین پلس آفیشل کے بانی۔ اب اس ویب سائٹ پر سب اپنا پوسٹر، تھمب نیل خود بنا سکیں گے۔"},
+en:{title1:"Deen Plus",title2:"Deen Ki Baat Dil Tak",heroP:"Now not just watch, make also. Make your Poster, Thumbnail, Status on this website and download.",make:"Make Poster 👇",thumbBtn:"Make Thumbnail",makerH:"🎨 Poster & Thumbnail Maker - Make Here",makerP:"Add your photo, write, change color, download. All here.",up:"1. Add Your Photo",t1:"2. Top Text (Big)",t2:"3. Bottom Text (Small)",t3:"4. Your Name / Channel Name",col:"Color - Text",size:"Size - Big / Small",style:"Style",dl:"⬇ Download Poster",sample:"✨ See Sample Poster",note:"Press Download, photo will save in mobile. Then use on WhatsApp / YouTube / Facebook.",ready:"Ready Made Posters - Direct Download",aboutH:"About Sadiq Hussain",aboutP:"Founder of Deen Plus Official. Now everyone can make their own poster, thumbnail on this website."},
+hi:{title1:"दीन प्लस",title2:"दीन की बात दिल तक",heroP:"अब सिर्फ देखना नहीं, बनाना भी है। यहीं वेबसाइट पर अपना पोस्टर, थंबनेल बनाओ।",make:"पोस्टर बनाओ 👇",thumbBtn:"थंबनेल बनाओ",makerH:"🎨 पोस्टर और थंबनेल मेकर - यहीं बनाओ",makerP:"अपनी तस्वीर लगाओ, लिखो, रंग बदलो, डाउनलोड करो।",up:"1. अपनी तस्वीर लगाओ",t1:"2. ऊपर वाला लिखा (बड़ा)",t2:"3. नीचे वाला लिखा (छोटा)",t3:"4. अपना नाम",col:"रंग",size:"साइज़",style:"स्टाइल",dl:"⬇ पोस्टर डाउनलोड करो",sample:"✨ सैंपल देखो",note:"डाउनलोड दबाओ, तस्वीर मोबाइल में आ जाएगी।",ready:"रेडी मेड पोस्टर",aboutH:"सादिक हुसैन के बारे में",aboutP:"दीन प्लस ऑफिशियल के संस्थापक। अब सब अपना पोस्टर खुद बना सकेंगे।"},
+bn:{title1:"দীন প্লাস",title2:"দীনের কথা দিল পর্যন্ত",heroP:"এখন শুধু দেখা নয়, বানানোও। এই ওয়েবসাইটেই পোস্টার, থাম্বনেইল বানান।",make:"পোস্টার বানান 👇",thumbBtn:"থাম্বনেইল বানান",makerH:"🎨 পোস্টার ও থাম্বনেইল মেকার",makerP:"আপনার ছবি দিন, লিখুন, রঙ বদলান, ডাউনলোড করুন।",up:"1. আপনার ছবি দিন",t1:"2. উপরের লেখা",t2:"3. নিচের লেখা",t3:"4. আপনার নাম",col:"রঙ",size:"সাইজ",style:"স্টাইল",dl:"⬇ পোস্টার ডাউনলোড",sample:"✨ নমুনা দেখুন",note:"ডাউনলোড চাপুন, ছবি মোবাইলে চলে যাবে।",ready:"রেডি মেড পোস্টার",aboutH:"সাদিক হোসেন সম্পর্কে",aboutP:"দীন প্লাস অফিশিয়ালের প্রতিষ্ঠাতা। এখন সবাই নিজের পোস্টার বানাতে পারবে।"},
+ta:{title1:"தீன் பிளஸ்",title2:"தீன் பேச்சு இதயம் வரை",heroP:"இப்போது பார்ப்பது மட்டும் இல்லை, உருவாக்குவதும் கூட. இங்கேயே போஸ்டர் உருவாக்கவும்.",make:"போஸ்டர் உருவாக்கவும் 👇",thumbBtn:"தம்னெயில் உருவாக்கவும்",makerH:"🎨 போஸ்டர் மற்றும் தம்னெயில் மேக்கர்",makerP:"உங்கள் புகைப்படம், எழுதவும், நிறம் மாற்றவும், பதிவிறக்கவும்.",up:"1. உங்கள் புகைப்படம்",t1:"2. மேல் உரை",t2:"3. கீழ் உரை",t3:"4. உங்கள் பெயர்",col:"நிறம்",size:"அளவு",style:"ஸ்டைல்",dl:"⬇ போஸ்டர் பதிவிறக்கு",sample:"✨ மாதிரி பார்க்கவும்",note:"பதிவிறக்கு அழுத்தவும், படம் மொபைலில் வரும்.",ready:"ரெடி மேட் போஸ்டர்கள்",aboutH:"சாதிக் ஹுசைன் பற்றி",aboutP:"தீன் பிளஸ் அபிஷியல் நிறுவனர். இப்போது அனைவரும் தங்கள் போஸ்டர் உருவாக்கலாம்."},
+te:{title1:"దీన్ ప్లస్",title2:"దీన్ మాట గుండె వరకు",heroP:"ఇప్పుడు చూడటం మాత్రమే కాదు, తయారు చేయడం కూడా. ఇక్కడే పోస్టర్ తయారు చేయండి.",make:"పోస్టర్ తయారు చేయండి 👇",thumbBtn:"థంబ్‌నెయిల్ తయారు చేయండి",makerH:"🎨 పోస్టర్ & థంబ్‌నెయిల్ మేకర్",makerP:"మీ ఫోటో పెట్టండి, రాయండి, రంగు మార్చండి, డౌన్‌లోడ్ చేయండి.",up:"1. మీ ఫోటో పెట్టండి",t1:"2. పైన రాత",t2:"3. కింద రాత",t3:"4. మీ పేరు",col:"రంగు",size:"సైజు",style:"స్టైల్",dl:"⬇ పోస్టర్ డౌన్‌లోడ్",sample:"✨ శాంపిల్ చూడండి",note:"డౌన్‌లోడ్ నొక్కండి, ఫోటో మొబైల్‌లో వస్తుంది.",ready:"రెడీ మేడ్ పోస్టర్లు",aboutH:"సాదిక్ హుస్సేన్ గురించి",aboutP:"దీన్ ప్లస్ అఫీషియల్ వ్యవస్థాపకుడు. ఇప్పుడు అందరూ తమ పోస్టర్ తయారు చేసుకోవచ్చు."},
+tr:{title1:"Deen Plus",title2:"Deen Ki Baat Dil Tak",heroP:"Artık sadece izlemek yok, yapmak da var. Bu sitede Poster, Thumbnail yap ve indir.",make:"Poster Yap 👇",thumbBtn:"Thumbnail Yap",makerH:"🎨 Poster & Thumbnail Yapıcı - Burada Yap",makerP:"Fotoğrafını ekle, yaz, renk değiştir, indir. Hepsi burada.",up:"1. Fotoğrafını Ekle",t1:"2. Üst Yazı",t2:"3. Alt Yazı",t3:"4. Adın",col:"Renk",size:"Boyut",style:"Stil",dl:"⬇ Poster İndir",sample:"✨ Örnek Gör",note:"İndir'e bas, fotoğraf telefona gelsin.",ready:"Hazır Posterler",aboutH:"Sadiq Hussain Hakkında",aboutP:"Deen Plus Official kurucusu. Artık herkes kendi posterini yapabilecek."},
+ar:{title1:"دين بلس",title2:"كلام الدين يصل للقلب",heroP:"الآن ليس مشاهدة فقط، بل صنع أيضا. اصنع ملصقك ومصغرتك هنا وحمّلها.",make:"اصنع ملصق 👇",thumbBtn:"اصنع مصغرة",makerH:"🎨 صانع الملصقات والمصغرات - اصنع هنا",makerP:"أضف صورتك، اكتب، غيّر اللون، حمّل. كل شيء هنا.",up:"1. أضف صورتك",t1:"2. النص العلوي",t2:"3. النص السفلي",t3:"4. اسمك",col:"اللون",size:"الحجم",style:"النمط",dl:"⬇ تحميل الملصق",sample:"✨ عرض عينة",note:"اضغط تحميل، الصورة ستصل لجوالك.",ready:"ملصقات جاهزة",aboutH:"حول صادق حسين",aboutP:"مؤسس دين بلس الرسمي. الآن الجميع يستطيع صنع ملصقه بنفسه."}
+};
+function setLang(l,btn){
+document.querySelectorAll('.langbar button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+var d=T[l];
+document.querySelectorAll('[data-i]').forEach(el=>{var k=el.getAttribute('data-i');if(d[k]) el.innerText=d[k];});
+if(l=='ur'||l=='ar'){document.body.dir='rtl';}else{document.body.dir='ltr';}
+}
+</script>
+</body>
+</html>
