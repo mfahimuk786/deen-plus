@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen Plus - Deen Ki Baat Dil Tak</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f7f3e8;color:#111}
+header{background:#0a3d24;color:#fff;padding:14px 12px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{color:#f5d67a;font-size:26px}
+header p{font-size:13px;opacity:.9;margin-top:3px}
+nav{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;background:#14532d;padding:7px 12px;border-radius:20px;font-size:13px;font-weight:bold}
+.wa{display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:bold;margin-top:10px}
+.hero{background:#0a3d24;color:#fff;text-align:center;padding:22px 14px;border-bottom:4px solid #f5d67a}
+.hero h2{color:#f5d67a;font-size:28px}
+.hero p{margin-top:6px;font-size:14px;line-height:1.6}
+.wrap{padding:12px;max-width:1000px;margin:auto}
+.head{background:#fff;padding:12px;border-radius:12px;border:1px solid #e5d9b0;margin:14px 0 10px}
+.head h2{font-size:19px;color:#0a3d24}
+.head p{font-size:13px;color:#555;margin-top:4px;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+.card{background:#0a3d24;color:#fff;border-radius:14px;overflow:hidden;border:2px solid #f5d67a;text-align:center}
+.card img{width:100%;height:150px;object-fit:cover;display:block;background:#ddd}
+.card .t{padding:10px 8px 2px;font-weight:bold;font-size:15px;line-height:1.4}
+.card .s{font-size:12px;opacity:.8;padding:0 8px 8px}
+.btn{display:block;background:#f5d67a;color:#000;text-decoration:none;font-weight:bold;padding:11px;margin:0 10px 12px;border-radius:9px;font-size:14px;border:none;width:calc(100% - 20px);cursor:pointer}
+.box{background:#fff;border:1px solid #e5d9b0;border-radius:14px;padding:14px;margin-top:10px}
+label{font-weight:bold;display:block;margin:14px 0 6px;font-size:14px}
+input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;font-size:15px}
+#preview{margin-top:14px;background:#0a3d24;color:#f5d67a;border:4px solid #f5d67a;border-radius:12px;padding:28px 12px;text-align:center;min-height:260px;display:flex;flex-direction:column;justify-content:center}
+#preview h3{font-size:30px;line-height:1.3}
+#preview p{color:#fff;margin-top:8px;font-size:13px}
+#preview small{margin-top:22px;color:#f5d67a;font-weight:bold}
+footer{background:#0a3d24;color:#fff;text-align:center;padding:16px;font-size:13px;margin-top:16px}
+footer a{color:#f5d67a}
+</style>
+</head>
+<body>
 
+<header>
+<h1>Deen Plus</h1>
+<p>Deen Ki Baat Dil Tak</p>
+<nav>
+<a href="#home">Home</a>
+<a href="#drama">Drama</a>
+<a href="#video">Meri Video</a>
+<a href="#poster">Poster Maker</a>
+<a href="#about">About</a>
+</nav>
+<a class="wa" href="https://wa.me/923112314531" target="_blank">💬 WhatsApp - 03112314531</a>
+</header>
+
+<div class="hero" id="home">
+<h2>Assalam-o-Alaikum</h2>
+<p>Deen Plus me khush aamdeed. Yahan Islami Drama, Bayan, Naat, Waqia aur Deeni Poster milenge. Koi bhi dabba dabao, wo khul jayega.</p>
+</div>
+
+<div class="wrap">
+
+<!-- DRAMA -->
+<div class="head" id="drama"><h2>🎬 Islami Drama - Urdu Dubbed</h2><p>Neeche kisi bhi drama par click karo, wo YouTube par khul jayega.</p></div>
+<div class="grid">
+<div class="card">
+<img src="ertugrul.jpg" onerror="this.src='https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600'">
+<div class="t">Dirilis Ertugrul - Episode 1</div><div class="s">Islami Drama • Urdu Dubbed</div>
+<a class="btn" href="https://www.youtube.com/results?search_query=Dirilis+Ertugrul+Urdu+Episode+1" target="_blank">▶ Play Drama</a>
+</div>
+<div class="card">
+<img src="osman.jpg" onerror="this.src='https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=600'">
+<div class="t">Kurulus Osman - Episode 1</div><div class="s">Islami Drama • Urdu Dubbed</div>
+<a class="btn" href="https://www.youtube.com/results?search_query=Kurulus+Osman+Urdu+Episode+1" target="_blank">▶ Play Drama</a>
+</div>
+<div class="card">
+<img src="hamid.jpg" onerror="this.src='https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=600'">
+<div class="t">Sultan Abdul Hamid - Episode 1</div><div class="s">Islami Drama • Urdu Dubbed</div>
+<a class="btn" href="https://www.youtube.com/results?search_query=Sultan+Abdul+Hamid+Urdu+Episode+1" target="_blank">▶ Play Drama</a>
+</div>
+<div class="card">
+<img src="salahuddin.jpg" onerror="this.src='https://images.unsplash.com/photo-1519817650390-64a93db51149?w=600'">
+<div class="t">Salahuddin Ayyubi - Episode 1</div><div class="s">Islami Drama • Urdu Dubbed</div>
+<a class="btn" href="https://www.youtube.com/results?search_query=Salahuddin+Ayyubi+Urdu+Episode+1" target="_blank">▶ Play Drama</a>
+</div>
+</div>
+
+<!-- MERI VIDEO -->
+<div class="head" id="video"><h2>📹 Meri Video - Mere Channel Wali</h2><p>Ye meri apni video hai, mere channel wali. Kisi bhi video par click karo, wo chalegi.</p></div>
+<div class="grid">
+<div class="card">
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank"><img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" onerror="this.src='https://images.unsplash.com/photo-1519791883288-dc8bd696e667?w=600'"></a>
+<div class="t">Meri Video 1 - Bayan</div><div class="s">Deen Plus Official</div>
+<a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank">▶ Video Dekho</a>
+</div>
+<div class="card">
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank"><img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" onerror="this.src='https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600'"></a>
+<div class="t">Meri Video 2 - Naat</div><div class="s">Deen Plus Official</div>
+<a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank">▶ Video Dekho</a>
+</div>
+<div class="card">
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank"><img src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg" onerror="this.src='https://images.unsplash.com/photo-1585036156171-384164a8c675?w=600'"></a>
+<div class="t">Meri Video 3 - Waqia</div><div class="s">Deen Plus Official</div>
+<a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank">▶ Video Dekho</a>
+</div>
+</div>
+<p style="font-size:12px;color:#666;margin-top:8px;line-height:1.6">Ustad, upar VIDEO_ID_1 likha hai na, wahan apni YouTube video ka ID lagana hai. Misal: agar tumhari video ka link hai youtube.com/watch?v=abc123 to VIDEO_ID_1 ki jagah abc123 likh do. Phir thumbnail khud aa jayega, laal button nahi aayega.</p>
+
+<!-- QURAN AUDIO -->
+<div class="head"><h2>📖 Quran Audio - Mishary Alafasi</h2><p>Play dabao, Quran chalega. Sab ko ek jaisa chalega.</p></div>
+<div class="box" style="text-align:center">
+<p><b>Surah Al-Fatiha - 001.mp3</b></p>
+<audio controls style="width:100%;margin-top:8px"><source src="001.mp3" type="audio/mpeg">Tumhara browser audio nahi chalata</audio>
+<p style="margin-top:12px"><b>Surah An-Naas - 114.mp3</b></p>
+<audio controls style="width:100%;margin-top:8px"><source src="114.mp3" type="audio/mpeg"></audio>
+<p style="font-size:12px;color:#666;margin-top:8px">001.mp3 aur 114.mp3 GitHub me upload kar do, phir sab ko chalega.</p>
+</div>
+
+<!-- POSTER MAKER -->
+<div class="head" id="poster"><h2>🎨 Poster & Thumbnail Maker - Yahi Banao</h2><p>Apna naam likho, likhai likho, rang chuno, poster ban jayega. Ye har aadmi ka apna hoga.</p></div>
+<div class="box">
+<label>1. Upar Wala Likha</label>
+<input id="topText" value="Jummah Mubarak" oninput="updatePoster()">
+<label>2. Neeche Wala Likha</label>
+<input id="bottomText" value="Deen Plus Official - Deen Ki Baat Dil Tak" oninput="updatePoster()">
+<label>3. Apna Naam</label>
+<input id="nameText" value="Sadiq Hussain" oninput="updatePoster()">
+<label>Rang</label>
+<select id="colorSel" onchange="updatePoster()"><option value="#f5d67a">Golden</option><option value="#ffffff">White</option><option value="#25D366">Green</option><option value="#ffcc00">Yellow</option></select>
+<div id="preview"><h3 id="pTop">Jummah Mubarak</h3><p id="pBottom">Deen Plus Official - Deen Ki Baat Dil Tak</p><small id="pName">Sadiq Hussain • Deen Plus</small></div>
+<button class="btn" style="margin-top:12px" onclick="downloadPoster()">⬇ Poster Download Karo</button>
+</div>
+
+<div class="head" id="about"><h2>ℹ️ About Deen Plus</h2><p>Deen Plus ka maqsad Deen ki baat dil tak pahunchana hai. Drama, Bayan, Naat, Quran aur Deeni Poster sab ek jagah.</p><p style="margin-top:8px">WhatsApp: <a href="https://wa.me/923112314531">03112314531</a></p></div>
+
+</div>
+<footer>Deen Plus © 2026 • Deen Ki Baat Dil Tak • WhatsApp: 03112314531</footer>
+
+<script>
+function updatePoster(){
+document.getElementById('pTop').innerText=document.getElementById('topText').value;
+document.getElementById('pBottom').innerText=document.getElementById('bottomText').value;
+document.getElementById('pName').innerText=document.getElementById('nameText').value+' • Deen Plus';
+document.getElementById('pTop').style.color=document.getElementById('colorSel').value;
+}
+function downloadPoster(){alert('Ustad, poster ka screenshot le lo, ye hi sab se asaan tareeka hai. Mobile me Power + Volume Down dabao.');}
+</script>
+</body>
+</html>
