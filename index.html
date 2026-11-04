@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen Plus - मुकम्मल इस्लामी मार्केट</title>
+<style>
+:root{--gold:#e9c67b;--bg:#061a14;--bg2:#0a2e26;--card:#143d31;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:system-ui;padding-bottom:90px}
+header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:2px solid #e9c67b40;padding:10px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.logo{width:60px;height:60px;border-radius:50%;border:3px solid var(--gold);object-fit:cover}
+.tabs{display:flex;gap:8px;overflow:auto;padding:10px;background:var(--bg2);position:sticky;top:72px;z-index:90}
+.tabs b{padding:8px 14px;border:1.5px solid var(--gold);border-radius:20px;cursor:pointer;white-space:nowrap;font-size:13px;opacity:.6}
+.tabs b.active{background:var(--gold);color:var(--bg);opacity:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:12px}
+.card{background:var(--card);border:1px solid #e9c67b40;border-radius:12px;overflow:hidden;cursor:pointer;padding:8px;text-align:center}
+.card img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+.card b{color:var(--gold);font-size:13px;display:block;margin-top:6px}
+audio{width:100%;margin-top:6px}
+.maker{border:2px solid var(--gold);border-radius:16px;padding:12px;margin:12px;background:var(--bg2)}
+canvas{width:100%;background:#fff;border-radius:12px;max-width:400px;height:400px;display:block;margin:10px auto}
+input,select,button{padding:10px;border-radius:8px;border:1px solid var(--gold);margin:4px}
+button{background:var(--gold);color:var(--bg);font-weight:bold;cursor:pointer}
+#mp3Bar{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:2px solid var(--gold);padding:8px 12px;display:flex;gap:10px;align-items:center;z-index:999}
+#mp3Bar audio{flex:1}
+</style>
+</head>
+<body>
 
+<header>
+<div class="top">
+<div style="display:flex;gap:10px;align-items:center">
+<img class="logo" src="logo.png" onerror="this.src='https://img.youtube.com/vi/33NKK8XChi0/hqdefault.jpg'">
+<div><b style="color:var(--gold)">Deen Plus</b><br><small>ہر چیز کی سہولت - مکمل مارکیٹ</small></div>
+</div>
+<div style="font-size:11px;color:var(--gold)">0311-2314531<br>deenplusofficial@gmail.com</div>
+</div>
+</header>
+
+<div class="tabs">
+<b id="t-all" class="active" onclick="setCat('all')">All Market</b>
+<b id="t-quranS" onclick="setCat('quranS')">چھوٹی سورتیں MP3</b>
+<b id="t-quranL" onclick="setCat('quranL')">بڑی سورتیں MP3</b>
+<b id="t-naat" onclick="setCat('naat')">نعتیں MP3</b>
+<b id="t-nasheed" onclick="setCat('nasheed')">اسلامی Music</b>
+<b id="t-poster" onclick="setCat('poster')">پوسٹرز</b>
+<b id="t-template" onclick="setCat('template')">ٹیمپلیٹس</b>
+<b id="t-maker" onclick="setCat('maker')">پوسٹر میکر</b>
+<b id="t-lab" onclick="setCat('lab')">فوٹو لیب</b>
+</div>
+
+<div id="market" class="grid"></div>
+
+<!-- POSTER MAKER -->
+<div id="sec-maker" class="maker" style="display:none">
+<h3 style="color:var(--gold)">🎨 پوسٹر میکر - اپنا پوسٹر بنائیں</h3>
+<input id="pText" placeholder="اپنا نام یا جملہ لکھیں - جیسے جمعہ مبارک" style="width:80%">
+<select id="pStyle"><option>سادہ سنہری</option><option>مدینہ والا</option><option>مکہ والا</option></select>
+<button onclick="makePoster()">بنائیں</button>
+<button onclick="downloadPoster()">ڈاؤن لوڈ</button>
+<canvas id="can" width="600" height="600"></canvas>
+</div>
+
+<!-- PHOTO LAB -->
+<div id="sec-lab" class="maker" style="display:none">
+<h3 style="color:var(--gold)">📸 فوٹو لیب - تصویر کو اسلامی فریم لگائیں</h3>
+<input type="file" id="imgIn" accept="image/*" onchange="loadLab(event)">
+<select id="frame"><option>سنہری بارڈر</option><option>بسم اللہ فریم</option><option>Deen Plus لوگو فریم</option></select>
+<canvas id="can2" width="600" height="600"></canvas>
+<button onclick="downloadLab()">فوٹو ڈاؤن لوڈ</button>
+</div>
+
+<div id="mp3Bar">
+<b id="now" style="color:var(--gold);font-size:12px;min-width:80px">MP3 Player</b>
+<audio id="aud" controls></audio>
+</div>
+
+<footer style="text-align:center;padding:20px;color:var(--gold);font-size:11px;border-top:1px solid #e9c67b30">© Deen Plus • 0311-2314531 • یہ چیمپئن والی مارکیٹ ہے - فٹو خانوں والی نہیں</footer>
+
+<script>
+const allData=[
+{cat:'quranS',title:'سورۃ الاخلاص MP3',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',thumb:'https://images.unsplash.com/photo-1585664811087-47f65da78d7a?w=300'},
+{cat:'quranS',title:'سورۃ الفلق MP3',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',thumb:'https://images.unsplash.com/photo-1585664811087-47f65da78d7a?w=300'},
+{cat:'quranL',title:'سورۃ الرحمن MP3',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',thumb:'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=300'},
+{cat:'quranL',title:'سورۃ یٰسین MP3',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',thumb:'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=300'},
+{cat:'naat',title:'نعت شریف MP3 - مصطفی جان رحمت',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',thumb:'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300'},
+{cat:'naat',title:'نعت MP3 - فاصلوں کو تکلف',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',thumb:'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300'},
+{cat:'nasheed',title:'اسلامی Nasheed - No Music',file:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',thumb:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300'},
+{cat:'poster',title:'جمعہ مبارک پوسٹر',file:'',thumb:'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=300'},
+{cat:'poster',title:'عید مبارک پوسٹر',file:'',thumb:'https://images.unsplash.com/photo-1519810755548-39de2172b455?w=300'},
+{cat:'template',title:'یوٹیوب تھمب نیل ٹیمپلیٹ',file:'',thumb:'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300'},
+{cat:'template',title:'اسلامی اسٹوری ٹیمپلیٹ',file:'',thumb:'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300'},
+];
+let cur='all';
+function setCat(c){
+ cur=c;
+ document.querySelectorAll('.tabs b').forEach(b=>b.classList.remove('active'));
+ document.getElementById('t-'+c).classList.add('active');
+ document.getElementById('sec-maker').style.display=c==='maker'?'block':'none';
+ document.getElementById('sec-lab').style.display=c==='lab'?'block':'none';
+ render();
+}
+function render(){
+ let m=document.getElementById('market'); m.innerHTML='';
+ allData.forEach(v=>{
+  if(cur==='all' || v.cat===cur || (cur==='poster' && v.cat==='poster') ){
+   if(cur==='maker' || cur==='lab') return;
+   if(v.cat==='poster' || v.cat==='template'){
+     m.innerHTML+=`<div class="card"><img src="${v.thumb}"><b>${v.title}</b><button onclick="useTemplate('${v.title}')">استعمال کریں</button></div>`;
+   } else {
+     m.innerHTML+=`<div class="card" onclick="playMP3('${v.title}','${v.file}')"><img src="${v.thumb}"><b>${v.title}</b><small>${v.cat}</small><audio src="${v.file}" controls style="height:30px"></audio></div>`;
+   }
+  }
+ });
+}
+function playMP3(t,f){
+ document.getElementById('now').innerText=t;
+ let a=document.getElementById('aud'); a.src=f; a.play();
+}
+function useTemplate(t){ setCat('maker'); document.getElementById('pText').value=t; makePoster(); }
+
+// POSTER MAKER LOGIC
+function makePoster(){
+ let c=document.getElementById('can'); let ctx=c.getContext('2d');
+ ctx.fillStyle='#0a2e26'; ctx.fillRect(0,0,600,600);
+ ctx.strokeStyle='#e9c67b'; ctx.lineWidth=10; ctx.strokeRect(15,15,570,570);
+ ctx.fillStyle='#e9c67b'; ctx.font='bold 40px system-ui'; ctx.textAlign='center';
+ let txt=document.getElementById('pText').value || 'Deen Plus';
+ ctx.fillText(txt,300,300);
+ ctx.font='20px system-ui'; ctx.fillText('Deen Ki Baat, Dil Tak - 0311-2314531',300,550);
+}
+function downloadPoster(){ let c=document.getElementById('can'); let a=document.createElement('a'); a.download='deenplus-poster.png'; a.href=c.toDataURL(); a.click(); }
+
+// PHOTO LAB LOGIC
+let labImg=null;
+function loadLab(e){
+ let file=e.target.files[0]; let reader=new FileReader();
+ reader.onload=function(ev){ labImg=new Image(); labImg.onload=drawLab; labImg.src=ev.target.result; }
+ reader.readAsDataURL(file);
+}
+function drawLab(){
+ let c=document.getElementById('can2'); let ctx=c.getContext('2d');
+ ctx.clearRect(0,0,600,600); ctx.drawImage(labImg,0,0,600,600);
+ ctx.strokeStyle='#e9c67b'; ctx.lineWidth=18; ctx.strokeRect(0,0,600,600);
+ ctx.fillStyle='#e9c67b'; ctx.font='bold 24px system-ui'; ctx.fillText('Deen Plus - '+document.getElementById('frame').value,20,580);
+}
+function downloadLab(){ let c=document.getElementById('can2'); let a=document.createElement('a'); a.download='deenplus-lab.png'; a.href=c.toDataURL(); a.click(); }
+
+render(); makePoster();
+</script>
+</body>
+</html>
